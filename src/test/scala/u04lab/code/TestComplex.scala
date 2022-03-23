@@ -13,5 +13,4 @@ class TestComplex {
   def testComplexSum(): Unit = assertEquals(Complex(4, 6), c1 + c2)
   @Test
   def testComplexProd(): Unit = assertEquals(Complex(-5, 10), c1 * c2)
-
 }

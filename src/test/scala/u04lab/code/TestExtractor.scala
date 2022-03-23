@@ -17,5 +17,4 @@ class TestExtractor {
   @Test
   def testExtractorNone(): Unit =
     assertThrows(classOf[MatchError], () => courseListNoSameTeacher match {case SameTeacher(t) => true})
-
 }
