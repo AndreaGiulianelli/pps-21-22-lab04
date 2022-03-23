@@ -1,6 +1,7 @@
 package u04lab.code
 
 import List.*
+import Option.*
 
 trait Student:
   def name: String
@@ -26,6 +27,12 @@ object Student:
 object Course:
   def apply(name: String, teacher: String): Course = CourseImpl(name, teacher)
   private case class CourseImpl(name: String, teacher: String) extends Course
+
+object SameTeacher:
+  def unapply(courses: List[Course]): scala.Option[String] = courses match
+    case Cons(course, t) => List.foldLeft(t)(scala.Option(course.teacher))((teacher, c) => teacher.filter(_ == c.teacher))
+    case Nil() => scala.Option.empty
+
 
 @main def checkStudents(): Unit =
   val cPPS = Course("PPS", "Viroli")
