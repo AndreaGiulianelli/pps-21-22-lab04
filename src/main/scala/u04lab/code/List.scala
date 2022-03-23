@@ -62,9 +62,8 @@ object List:
   def take[A](list: List[A], n: Int): List[A] = reverse(drop(reverse(list), length(list) - n))
 
   def apply[A](elements: A*): List[A] =
-    var list = Nil[A]()
+    var list: List[A] = Nil()
     elements foreach (elem => list = append(list, Cons(elem, Nil())))
     list
-
 
 end List
