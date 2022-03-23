@@ -1,7 +1,7 @@
 package u04lab.code
 
 import List.*
-import Option.*
+import scala.Option
 
 trait Student:
   def name: String
@@ -29,9 +29,9 @@ object Course:
   private case class CourseImpl(name: String, teacher: String) extends Course
 
 object SameTeacher:
-  def unapply(courses: List[Course]): scala.Option[String] = courses match
-    case Cons(course, t) => List.foldLeft(t)(scala.Option(course.teacher))((teacher, c) => teacher.filter(_ == c.teacher))
-    case Nil() => scala.Option.empty
+  def unapply(courses: List[Course]): Option[String] = courses match
+    case Cons(course, t) => List.foldLeft(t)(Option(course.teacher))((teacher, c) => teacher.filter(_ == c.teacher))
+    case Nil() => Option.empty
 
 
 @main def checkStudents(): Unit =

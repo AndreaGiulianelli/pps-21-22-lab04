@@ -3,7 +3,7 @@ package scala.u04lab.code
 import org.junit.Test
 import u04lab.code.{Course, List, SameTeacher}
 import u04lab.code.List.*
-import org.junit.Assert.{assertEquals, assertTrue}
+import org.junit.Assert.{assertEquals, assertThrows, assertTrue}
 
 class TestExtractor {
   val courseListSameTeacher: List[Course] = Cons(Course("OOP", "Viroli"), Cons(Course("PPS", "Viroli"), Nil()))
@@ -15,8 +15,7 @@ class TestExtractor {
     assertEquals("Viroli", t)
 
   @Test
-  def testExtractorNone(): Unit = courseListNoSameTeacher match
-    case SameTeacher(t) => assertTrue(false)
-    case _ => assertTrue(true)
+  def testExtractorNone(): Unit =
+    assertThrows(classOf[MatchError], () => courseListNoSameTeacher match {case SameTeacher(t) => true})
 
 }

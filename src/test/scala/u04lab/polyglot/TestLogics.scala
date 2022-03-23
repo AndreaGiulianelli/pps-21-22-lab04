@@ -11,7 +11,7 @@ import u04lab.code.Option
 
 import scala.util.Random
 
-class TestLogists {
+class TestLogics {
   private val size = 4
   private val mines = 2
   private val logics = LogicsImpl(size, mines)
